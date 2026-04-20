@@ -58,7 +58,6 @@
       padding: 16px 22px; cursor: pointer; font-weight: 700; font-size: 16px; color: var(--primary); list-style: none;
       display: flex; align-items: center; justify-content: space-between; user-select: none; gap: 10px;
     }
-    details.step-card summary::-webkit-details-marker { display: none; }
     details.step-card summary::after { content: "▼"; font-size: 12px; transition: transform 0.2s; opacity: 0.5; }
     details.step-card[open] summary::after { transform: rotate(180deg); }
     details.step-card .step-content { padding: 0 22px 22px; }
@@ -75,51 +74,38 @@
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%2364748b' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
       background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px;
     }
-    input.invalid, textarea.invalid, select.invalid { border-color: var(--danger); background: #fef2f2; }
     input:focus, textarea:focus, select:focus { outline: none; border-color: var(--primary2); background: #fff; box-shadow: 0 0 0 3px rgba(99,102,241,0.10); }
-    textarea { min-height: 110px; resize: vertical; line-height: 1.6; white-space: pre-wrap; overflow: auto; }
+    textarea { min-height: 110px; resize: vertical; line-height: 1.6; white-space: pre-wrap; }
 
     .btn {
       display: inline-flex; align-items: center; gap: 6px; padding: 10px 20px; border-radius: 40px; border: none; font-weight: 600;
       cursor: pointer; font-size: 14px; transition: all 0.15s; background: #e9e9ef; color: #1f2937; margin-right: 8px; margin-bottom: 8px;
     }
-    .btn:hover { opacity: 0.92; transform: translateY(-1px); }
     .btn-primary { background: var(--primary2); color: #fff; }
-    .btn-success { background: var(--ok); color: #fff; }
-    .btn-warning { background: var(--warn); color: #fff; }
     .btn-pdf { background: #b91c1c; color: #fff; font-size: 15px; padding: 12px 26px; }
 
-    .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--border); }
     .word-counter { font-size: 13.5px; font-weight: 600; margin-top: 6px; }
     .word-counter.valid { color: var(--ok); }
     .word-counter.invalid { color: var(--danger); }
 
-    .examples-box { margin-top: 16px; background: #f8fafc; border-radius: 14px; padding: 14px 16px; border: 1px dashed #c7d2fe; }
-    .examples-label { font-weight: 600; margin-bottom: 10px; color: var(--primary); font-size: 13.5px; }
-    .examples-tabs { display: flex; gap: 8px; margin: 0 0 10px; flex-wrap: wrap; }
-    .examples-tabs button { padding: 7px 15px; background: #fff; border: 1.5px solid var(--border); border-radius: 30px; cursor: pointer; font-size: 12.5px; font-weight: 600; color: var(--primary); }
-    .examples-tabs button.active { background: var(--primary2); color: #fff; border-color: var(--primary2); }
-    .example-content { background: #fff; padding: 13px 16px; border-radius: 10px; font-size: 13.5px; line-height: 1.7; display: none; margin-top: 8px; border-left: 3px solid var(--primary2); }
-    .example-content.active { display: block; }
-
     .skills-container { display: flex; flex-direction: column; gap: 10px; }
     .skill-row { display: flex; gap: 10px; align-items: center; }
     .skill-row input { flex: 1; }
-    .btn-remove { padding: 9px 15px; background: #fee2e2; color: var(--danger); border-radius: 30px; cursor: pointer; font-size: 13px; border: none; font-weight: 600; white-space: nowrap; }
+    .btn-remove { padding: 9px 15px; background: #fee2e2; color: var(--danger); border-radius: 30px; cursor: pointer; border: none; }
 
     .week-cards { display: grid; gap: 22px; }
     .week-card-item { background: #fafbff; border: 1.5px solid var(--border); border-radius: 16px; padding: 20px 22px; }
-    .week-card-item h4 { margin: 0 0 16px; color: var(--primary); font-size: 17px; border-bottom: 1.5px solid #e0e7ff; padding-bottom: 10px; }
 
-    .notice-banner { background: #fffbeb; border: 1.5px solid #fcd34d; border-radius: 12px; padding: 12px 16px; margin-bottom: 18px; font-size: 13.5px; color: #78350f; line-height: 1.55; }
-    #toast { position: fixed; bottom: 24px; right: 24px; left: 24px; background: #1e1b4b; color: #fff; padding: 14px 24px; border-radius: 40px; display: none; z-index: 9999; font-weight: 500; font-size: 14px; max-width: 320px; margin: 0 auto; text-align: center; }
+    #toast { position: fixed; bottom: 24px; right: 24px; left: 24px; background: #1e1b4b; color: #fff; padding: 14px 24px; border-radius: 40px; display: none; z-index: 9999; text-align: center; }
 
-    .basics-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 28px; }
-    @media (max-width: 640px) { .basics-grid { grid-template-columns: 1fr; } }
-    .basics-grid label.required .lbl-main { margin-top: 0; }
-
-    .pdf-area { background: linear-gradient(90deg, #fef2f2, #fff); border: 1.5px solid #fca5a5; border-radius: 14px; padding: 18px 22px; margin-top: 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
-    .pdf-area p { margin: 0; font-size: 14px; color: #7f1d1d; font-weight: 500; }
+    /* ESTILO PARA EL PDF (Fuera de pantalla para que no parpadee) */
+    #pdf-template {
+        position: absolute;
+        left: -9999px;
+        top: 0;
+        width: 800px;
+        background: white;
+    }
   </style>
 </head>
 <body>
@@ -127,341 +113,167 @@
   <header>
     <div>
       <h1>📋 Planeación 3P · 3er trimestre</h1>
-      <div class="subtitle">Completa todos los campos para registrar tu proyecto de manera completa</div>
+      <div class="subtitle">Herramienta para alumnos</div>
     </div>
   </header>
 
   <div class="card">
     <div class="section-intro">
-      ⭐ Todos los campos marcados con <strong>*</strong> son obligatorios. Completa el formulario en orden y al final genera tu PDF.
+      ⭐ Completa el formulario y al final genera tu PDF.
     </div>
 
-    <div class="basics-grid">
-      <div>
-        <label class="required"><span class="lbl-main">🏷️ Nombre del proyecto</span></label>
-        <input type="text" id="projectName" placeholder="Ej: Huerto escolar comunitario">
-      </div>
-      <div>
-        <label class="required"><span class="lbl-main">🌱 Área de desarrollo</span></label>
+    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:15px; margin-bottom:20px;">
+      <label class="required"><span class="lbl-main">🏷️ Nombre del proyecto</span>
+        <input type="text" id="projectName">
+      </label>
+      <label class="required"><span class="lbl-main">🌱 Área</span>
         <select id="projectDomain">
           <option value="">-- Selecciona --</option>
           <option>Ciencia o Tecnología</option>
           <option>Arte y Cultura</option>
-          <option>Escritura</option>
-          <option>Música</option>
           <option>Impacto Social</option>
-          <option>Emprendimiento</option>
-          <option>Medio Ambiente</option>
-          <option>Cocina</option>
-          <option>Desarrollo personal</option>
         </select>
-      </div>
+      </label>
     </div>
 
     <details class="step-card" id="stepPurpose" open>
-      <summary>🎯 PASO 1 — Propósito del proyecto</summary>
+      <summary>🎯 PASO 1 — Propósito</summary>
       <div class="step-content">
-        <label class="required">
-          <span class="lbl-main">¿Cuál es el propósito de tu proyecto? <span style="font-weight:400; font-size:13px;">(mínimo 30 palabras)</span></span>
-        </label>
-        <p class="help">Explica <strong>QUÉ</strong> harás, <strong>PARA QUÉ</strong> y <strong>CÓMO</strong> lo llevarás a cabo.</p>
-        <textarea id="plan_purpose" placeholder="Escribe aquí tu propósito..."></textarea>
-        <div class="word-counter" id="wordCounter">0 / 30 palabras mínimas</div>
-
-        <div class="examples-box">
-          <div class="examples-label">💡 Ejemplos:</div>
-          <div class="examples-tabs">
-            <button type="button" class="example-tab active" data-ex="1">🌍 Impacto Social</button>
-            <button type="button" class="example-tab" data-ex="2">📱 Tecnología</button>
-            <button type="button" class="example-tab" data-ex="3">🎨 Arte</button>
-          </div>
-          <div class="example-content active" id="example1">Quiero crear un huerto escolar para que mis compañeros aprendan sobre plantas y alimentación saludable...</div>
-          <div class="example-content" id="example2">Voy a desarrollar una aplicación móvil que ayude a los estudiantes a organizarse mejor...</div>
-          <div class="example-content" id="example3">Mi proyecto es pintar un mural comunitario en la entrada de la escuela...</div>
-        </div>
+        <textarea id="plan_purpose" placeholder="Mínimo 30 palabras..."></textarea>
+        <div class="word-counter" id="wordCounter">0 / 30 palabras</div>
       </div>
     </details>
 
     <details class="step-card" id="stepSkills">
-      <summary>🛠️ PASO 2 — Habilidades que desarrollarás</summary>
+      <summary>🛠️ PASO 2 — Habilidades (mínimo 3)</summary>
       <div class="step-content">
-        <label class="required"><span class="lbl-main">Identifica al menos 3 habilidades</span></label>
         <div class="skills-container" id="skillsContainer"></div>
-        <button type="button" class="btn" id="btnAddSkill" style="margin-top:14px;">➕ Agregar habilidad</button>
+        <button type="button" class="btn" id="btnAddSkill">➕ Agregar</button>
       </div>
     </details>
 
     <details class="step-card" id="stepWeeks">
-      <summary>📅 PASO 3 — Planeación semanal completa</summary>
+      <summary>📅 PASO 3 — Planeación Semanal</summary>
       <div class="step-content">
-        <div class="notice-banner">⚠️ <span>Planea el proyecto <u>en su totalidad</u> (mínimo 4 semanas).</span></div>
         <div class="week-cards" id="weekCardsContainer"></div>
-        <button type="button" class="btn btn-primary" id="btnAddWeek" style="margin-top:20px;">➕ Agregar semana</button>
+        <button type="button" class="btn btn-primary" id="btnAddWeek">➕ Agregar semana</button>
       </div>
     </details>
 
-    <details class="step-card" id="stepMgmt">
-      <summary>📝 PASO 4 — Sistema de gestión</summary>
-      <div class="step-content">
-        <label class="required"><span class="lbl-main">¿Cómo organizarás tus tareas?</span></label>
-        <select id="plan_mgmt">
-          <option value="">-- Selecciona --</option>
-          <option>Kanban</option>
-          <option>Checklist</option>
-          <option>Agenda física</option>
-        </select>
-        <label style="margin-top:14px;"><span class="lbl-main">🔗 Enlace a tu gestión digital (Opcional)</span></label>
-        <input type="url" id="plan_link" placeholder="https://...">
-      </div>
-    </details>
-
-    <div class="pdf-area">
-      <p id="pdfStatusText">📄 ¿Terminaste? Genera el PDF para compartirlo.</p>
-      <button type="button" class="btn btn-pdf" id="btnExportPDF">📄 Descargar PDF</button>
-    </div>
-
-    <div class="actions">
-      <button type="button" class="btn btn-primary" id="btnSavePlan">💾 Guardar local</button>
-      <button type="button" class="btn btn-warning" id="btnResetForm">🔄 Reiniciar</button>
+    <div style="margin-top:30px; text-align:center;">
+      <button type="button" class="btn btn-pdf" id="btnExportPDF">📄 GENERAR Y DESCARGAR PDF</button>
     </div>
   </div>
 </div>
 
-<div id="toast"></div>
+<div id="pdf-template"></div>
 
-<div id="pdf-template" style="display:none;"></div>
+<div id="toast"></div>
 
 <script>
   (function(){
     "use strict";
 
-    const STORAGE_KEY = 'passionProjectPlan_v4';
-
-    function storageSet(key, value) { try { localStorage.setItem(key, value); return true; } catch(e) { return false; } }
-    function storageGet(key) { try { return localStorage.getItem(key); } catch(e) { return null; } }
-
     function toast(msg) {
       const el = document.getElementById('toast');
       el.textContent = msg; el.style.display = 'block';
-      clearTimeout(el._timer); el._timer = setTimeout(() => el.style.display = 'none', 3000);
+      setTimeout(() => el.style.display = 'none', 3000);
     }
 
-    function escapeHtml(text) {
-      if (!text) return '';
-      const div = document.createElement('div');
-      div.textContent = text; return div.innerHTML;
-    }
-
-    function countWords(text) { return String(text || '').trim().split(/\s+/).filter(w => w.length > 0).length; }
+    function countWords(text) { return text.trim().split(/\s+/).filter(w => w.length > 0).length; }
 
     const skillsContainer = document.getElementById('skillsContainer');
     const weeksContainer = document.getElementById('weekCardsContainer');
-    const purposeTextarea = document.getElementById('plan_purpose');
-    const wordCounter = document.getElementById('wordCounter');
 
-    function addSkillRow(value = '') {
-      const row = document.createElement('div'); row.className = 'skill-row';
-      const input = document.createElement('input'); input.type = 'text'; input.className = 'skill-input';
-      input.placeholder = 'Ej: Pensamiento crítico'; input.value = value;
-      input.addEventListener('input', validateVisual); row.appendChild(input);
-
-      if (skillsContainer.children.length >= 3) {
-        const btnRemove = document.createElement('button'); btnRemove.className = 'btn-remove';
-        btnRemove.textContent = '✕'; btnRemove.type = 'button';
-        btnRemove.onclick = () => { row.remove(); validateVisual(); }; row.appendChild(btnRemove);
-      }
-      skillsContainer.appendChild(row);
+    function addSkillRow(val='') {
+      const div = document.createElement('div'); div.className = 'skill-row';
+      div.innerHTML = `<input type="text" class="skill-input" value="${val}"><button type="button" class="btn-remove">✕</button>`;
+      div.querySelector('button').onclick = () => div.remove();
+      skillsContainer.appendChild(div);
     }
 
-    function addWeekCard(weekNum, data = {}) {
-      const card = document.createElement('div'); card.className = 'week-card-item'; card.dataset.week = weekNum;
-      card.innerHTML = `
-        <h4>📌 Semana ${weekNum}</h4>
-        <label><span class="lbl-main">Meta de la semana</span></label>
-        <input type="text" class="week-goal" placeholder="¿Qué quieres lograr?" value="${escapeHtml(data.weekly_goal || '')}">
-        <label><span class="lbl-main">Acción concreta</span></label>
-        <input type="text" class="week-action" placeholder="¿Qué harás?" value="${escapeHtml(data.concrete_action || '')}">
-        <label><span class="lbl-main">Materiales</span></label>
-        <input type="text" class="week-materials" placeholder="¿Qué necesitas?" value="${escapeHtml(data.materials_inputs || '')}">
-        <label><span class="lbl-main">Plan B</span></label>
-        <input type="text" class="week-planb" placeholder="¿Qué pasa si algo falla?" value="${escapeHtml(data.contingency_plan_b || '')}">
-        <label><span class="lbl-main">Evidencia esperada</span></label>
-        <input type="text" class="week-evidence" placeholder="¿Qué demostrará tu avance?" value="${escapeHtml(data.expected_evidence || '')}">
-      `;
-      card.querySelectorAll('input').forEach(inp => inp.addEventListener('input', validateVisual));
-      if (weeksContainer.children.length >= 4) {
-        const btnRemove = document.createElement('button'); btnRemove.type = 'button'; btnRemove.className = 'btn-remove';
-        btnRemove.textContent = '✕ Eliminar'; btnRemove.style.marginTop = '10px';
-        btnRemove.onclick = () => { card.remove(); renumberWeeks(); validateVisual(); }; card.appendChild(btnRemove);
-      }
-      weeksContainer.appendChild(card);
+    function addWeekCard(num, data={}) {
+      const div = document.createElement('div'); div.className = 'week-card-item';
+      div.innerHTML = `<h4>Semana ${num}</h4>
+        <input type="text" class="w-goal" placeholder="Meta" value="${data.g||''}">
+        <textarea class="w-act" placeholder="Actividad" style="margin-top:10px">${data.a||''}</textarea>`;
+      weeksContainer.appendChild(div);
     }
 
-    function renumberWeeks() {
-      weeksContainer.querySelectorAll('.week-card-item').forEach((card, idx) => {
-        card.dataset.week = idx + 1; card.querySelector('h4').innerHTML = `📌 Semana ${idx + 1}`;
-      });
-    }
-
-    function gatherFormData() {
-      const projectName = document.getElementById('projectName').value.trim();
-      const domain = document.getElementById('projectDomain').value;
-      const mgmt = document.getElementById('plan_mgmt').value;
-      const link = document.getElementById('plan_link').value.trim();
-      const purpose = purposeTextarea.value.trim();
-      const skills = []; document.querySelectorAll('.skill-input').forEach(inp => { if(inp.value.trim()) skills.push(inp.value.trim()); });
-      const weeks = [];
-      document.querySelectorAll('.week-card-item').forEach(card => {
-        weeks.push({
-          weekly_goal: card.querySelector('.week-goal').value.trim(),
-          concrete_action: card.querySelector('.week-action').value.trim(),
-          materials_inputs: card.querySelector('.week-materials').value.trim(),
-          contingency_plan_b: card.querySelector('.week-planb').value.trim(),
-          expected_evidence: card.querySelector('.week-evidence').value.trim()
-        });
-      });
-      return { projectName, domain, mgmt, link, purpose, skills, weeks };
-    }
-
-    function populateForm(data) {
-      document.getElementById('projectName').value = data.projectName || '';
-      document.getElementById('projectDomain').value = data.domain || '';
-      document.getElementById('plan_mgmt').value = data.mgmt || '';
-      document.getElementById('plan_link').value = data.link || '';
-      purposeTextarea.value = data.purpose || '';
-      skillsContainer.innerHTML = '';
-      if (data.skills && data.skills.length) data.skills.forEach(s => addSkillRow(s));
-      while (skillsContainer.children.length < 3) addSkillRow('');
-      weeksContainer.innerHTML = '';
-      if (data.weeks && data.weeks.length) data.weeks.forEach((w, i) => addWeekCard(i + 1, w));
-      while (weeksContainer.children.length < 4) addWeekCard(weeksContainer.children.length + 1, {});
-      updateWordCount(); validateVisual();
-    }
-
-    function validateVisual() {
-      const purposeOk = countWords(purposeTextarea.value) >= 30;
-      document.getElementById('stepPurpose').classList.toggle('invalid', !purposeOk);
-      
-      const filledSkills = Array.from(document.querySelectorAll('.skill-input')).filter(i => i.value.trim()).length;
-      document.getElementById('stepSkills').classList.toggle('invalid', filledSkills < 3);
-
-      let weeksOk = weeksContainer.children.length >= 4;
-      document.getElementById('stepWeeks').classList.toggle('invalid', !weeksOk);
-
-      const mgmtOk = !!document.getElementById('plan_mgmt').value;
-      document.getElementById('stepMgmt').classList.toggle('invalid', !mgmtOk);
-    }
-
-    function updateWordCount() {
-      const wc = countWords(purposeTextarea.value);
-      wordCounter.textContent = `${wc} / 30 palabras mínimas`;
-      wordCounter.className = 'word-counter ' + (wc >= 30 ? 'valid' : 'invalid');
-    }
-
-    function saveToStorage() {
-      storageSet(STORAGE_KEY, JSON.stringify(gatherFormData()));
-      toast('✅ Guardado en este navegador');
-    }
-
-    function resetForm() {
-      if (confirm('¿Seguro que quieres borrar todo?')) {
-        populateForm({ projectName:'', domain:'', mgmt:'', link:'', purpose:'', skills:[], weeks:[] });
-      }
-    }
-
-    // --- NUEVO GENERADOR DE PDF ---
     function exportToPDF() {
       const btn = document.getElementById('btnExportPDF');
-      const statusText = document.getElementById('pdfStatusText');
-      btn.textContent = "⏳ Generando...";
+      const projectName = document.getElementById('projectName').value || "Mi Proyecto";
+      
+      btn.textContent = "⏳ PROCESANDO...";
       btn.disabled = true;
 
-      const data = gatherFormData();
+      // 1. Llenar el template del PDF
       const template = document.getElementById('pdf-template');
+      const purpose = document.getElementById('plan_purpose').value;
+      const domain = document.getElementById('projectDomain').value;
       
-      let skillsHtml = data.skills.map(s => `<li style="display:inline-block; background:#e0e7ff; color:#3730a3; padding:5px 12px; border-radius:15px; margin:4px; font-size:12px;">${escapeHtml(s)}</li>`).join('');
-      
-      let weeksHtml = data.weeks.map((w, i) => `
-        <div style="border:1px solid #c7d2fe; border-radius:8px; margin-bottom:10px; overflow:hidden; page-break-inside: avoid;">
-          <div style="background:#eef2ff; padding:6px 12px; font-weight:bold; color:#4338ca; font-size:13px;">Semana ${i+1}</div>
-          <table style="width:100%; border-collapse:collapse; font-size:12px;">
-            <tr><td style="padding:6px; border-top:1px solid #e8eaf6; width:100px; font-weight:bold;">Meta</td><td style="padding:6px; border-top:1px solid #e8eaf6;">${escapeHtml(w.weekly_goal)}</td></tr>
-            <tr><td style="padding:6px; border-top:1px solid #e8eaf6; font-weight:bold;">Acción</td><td style="padding:6px; border-top:1px solid #e8eaf6;">${escapeHtml(w.concrete_action)}</td></tr>
-            <tr><td style="padding:6px; border-top:1px solid #e8eaf6; font-weight:bold;">Materiales</td><td style="padding:6px; border-top:1px solid #e8eaf6;">${escapeHtml(w.materials_inputs)}</td></tr>
-            <tr><td style="padding:6px; border-top:1px solid #e8eaf6; font-weight:bold;">Plan B</td><td style="padding:6px; border-top:1px solid #e8eaf6;">${escapeHtml(w.contingency_plan_b)}</td></tr>
-            <tr><td style="padding:6px; border-top:1px solid #e8eaf6; font-weight:bold;">Evidencia</td><td style="padding:6px; border-top:1px solid #e8eaf6;">${escapeHtml(w.expected_evidence)}</td></tr>
-          </table>
-        </div>
-      `).join('');
+      let skillsList = "";
+      document.querySelectorAll('.skill-input').forEach(i => { if(i.value) skillsList += `<li>${i.value}</li>`; });
+
+      let weeksList = "";
+      document.querySelectorAll('.week-card-item').forEach((w, idx) => {
+        const goal = w.querySelector('.w-goal').value;
+        const act = w.querySelector('.w-act').value;
+        weeksList += `<div style="margin-bottom:15px; border:1px solid #ccc; padding:10px;">
+          <strong>Semana ${idx+1}:</strong> ${goal}<br>
+          <small>${act}</small>
+        </div>`;
+      });
 
       template.innerHTML = `
-        <div style="padding:30px; font-family:sans-serif; color:#1e1b4b; background: white;">
-          <div style="background:#4338ca; color:white; padding:20px; border-radius:10px; margin-bottom:20px;">
-            <h1 style="margin:0 0 5px; font-size:22px;">Planeación 3P</h1>
-            <p style="margin:0; font-size:14px;">Proyecto: <strong>${escapeHtml(data.projectName) || 'Sin nombre'}</strong> | Área: ${escapeHtml(data.domain)}</p>
-          </div>
-          <h2 style="font-size:16px; color:#4338ca; border-bottom:2px solid #e0e7ff; padding-bottom:5px;">Propósito</h2>
-          <p style="font-size:13px; line-height:1.6; background:#f8fafc; padding:12px; border-radius:8px;">${escapeHtml(data.purpose).replace(/\n/g, '<br>')}</p>
-          <h2 style="font-size:16px; color:#4338ca; border-bottom:2px solid #e0e7ff; padding-bottom:5px;">Habilidades</h2>
-          <ul style="list-style:none; padding:0;">${skillsHtml}</ul>
-          <h2 style="font-size:16px; color:#4338ca; border-bottom:2px solid #e0e7ff; padding-bottom:5px; margin-top:20px;">Planeación Semanal</h2>
-          ${weeksHtml}
-          <div style="margin-top:20px; font-size:12px; color:#64748b; text-align:center;">Generado el ${new Date().toLocaleDateString()} | Gestión: ${escapeHtml(data.mgmt)}</div>
+        <div style="padding:40px; font-family:sans-serif; background:white; color:black;">
+          <h1 style="color:#4338ca; border-bottom:3px solid #4338ca;">Planeación: ${projectName}</h1>
+          <p><strong>Área:</strong> ${domain}</p>
+          <h3>Propósito:</h3>
+          <p style="white-space:pre-wrap;">${purpose}</p>
+          <h3>Habilidades:</h3>
+          <ul>${skillsList}</ul>
+          <h3>Cronograma:</h3>
+          ${weeksList}
         </div>
       `;
 
-      template.style.display = 'block';
-
+      // 2. Opciones de PDF
       const opt = {
-        margin:       0,
-        filename:     `Planeacion_${data.projectName.replace(/\s+/g, '_') || 'Proyecto'}.pdf`,
-        image:        { type: 'jpeg', quality: 0.98 },
-        html2canvas:  { scale: 2, useCORS: true },
-        jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+        margin: [0.5, 0.5],
+        filename: `Planeacion_${projectName}.pdf`,
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2, useCORS: true, letterRendering: true },
+        jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
       };
 
-      html2pdf().set(opt).from(template).save().then(() => {
-        template.style.display = 'none';
-        btn.textContent = "📄 Descargar PDF";
-        btn.disabled = false;
-        toast('✅ PDF descargado con éxito');
-      }).catch(err => {
-        template.style.display = 'none';
-        btn.textContent = "📄 Descargar PDF";
-        btn.disabled = false;
-        toast('❌ Error al generar PDF');
-      });
+      // 3. Generar con un pequeño retraso para asegurar el renderizado en iPad
+      setTimeout(() => {
+        html2pdf().set(opt).from(template).save().then(() => {
+          btn.textContent = "📄 GENERAR Y DESCARGAR PDF";
+          btn.disabled = false;
+          toast("✅ PDF Descargado");
+        }).catch(err => {
+          console.error(err);
+          btn.disabled = false;
+          toast("❌ Error al crear PDF");
+        });
+      }, 700); // 700ms es el tiempo ideal para Safari
     }
 
     function init() {
-      const saved = storageGet(STORAGE_KEY);
-      if (saved) { try { populateForm(JSON.parse(saved)); } catch(e) { populateForm({}); } } 
-      else { populateForm({ skills:['','',''], weeks:[{},{},{},{}] }); }
-
-      purposeTextarea.addEventListener('input', () => { updateWordCount(); validateVisual(); });
-      document.getElementById('btnAddSkill').addEventListener('click', () => addSkillRow(''));
-      document.getElementById('btnAddWeek').addEventListener('click', () => { addWeekCard(weeksContainer.children.length + 1, {}); validateVisual(); });
+      for(let i=0; i<3; i++) addSkillRow();
+      for(let i=1; i<=4; i++) addWeekCard(i);
       
-      document.querySelectorAll('.example-tab').forEach(btn => {
-        btn.addEventListener('click', () => {
-          document.querySelectorAll('.example-tab').forEach(b => b.classList.remove('active'));
-          document.querySelectorAll('.example-content').forEach(c => c.classList.remove('active'));
-          btn.classList.add('active'); document.getElementById('example' + btn.dataset.ex).classList.add('active');
-        });
-      });
-
-      ['projectName', 'projectDomain', 'plan_mgmt'].forEach(id => {
-        document.getElementById(id).addEventListener('input', validateVisual);
-      });
-
-      document.getElementById('btnSavePlan').addEventListener('click', saveToStorage);
-      document.getElementById('btnResetForm').addEventListener('click', resetForm);
-      document.getElementById('btnExportPDF').addEventListener('click', exportToPDF);
-
-      validateVisual(); updateWordCount();
+      document.getElementById('btnAddSkill').onclick = () => addSkillRow();
+      document.getElementById('btnAddWeek').onclick = () => addWeekCard(weeksContainer.children.length+1);
+      document.getElementById('btnExportPDF').onclick = exportToPDF;
+      document.getElementById('plan_purpose').oninput = function() {
+        document.getElementById('wordCounter').textContent = countWords(this.value) + " / 30 palabras";
+      };
     }
 
-    if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', init); } else { init(); }
+    init();
   })();
 </script>
 </body>
