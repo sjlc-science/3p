@@ -2,279 +2,284 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Planeación 3P - 3er trimestre</title>
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
   <style>
     :root {
-      --bg: #f0f2fb;
-      --card: #fff;
-      --border: #d8dae5;
-      --primary: #4338ca;
-      --primary2: #6366f1;
-      --danger: #dc2626;
-      --ok: #059669;
-      --warn: #d97706;
-      --muted: #64748b;
+      --bg: #f0f2fb; --card: #fff; --border: #d8dae5; --primary: #4338ca;
+      --primary2: #6366f1; --danger: #dc2626; --ok: #059669; --warn: #d97706; --muted: #64748b;
     }
     * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
     body {
-      font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-      margin: 0;
-      background: var(--bg);
-      color: #1e1b4b;
-      min-height: 100vh;
-      padding: 28px 20px 60px;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      margin: 0; background: var(--bg); color: #1e1b4b; padding: 20px 15px 60px;
     }
     .container { max-width: 860px; margin: 0 auto; }
 
+    /* DISEÑO DE CABECERA */
     header {
       background: linear-gradient(135deg, #3730a3, var(--primary2));
-      color: #fff;
-      padding: 22px 28px 20px;
-      border-radius: 18px 18px 0 0;
-      display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px;
+      color: #fff; padding: 25px; border-radius: 18px 18px 0 0;
     }
-    header h1 { margin: 0; font-size: 1.65rem; font-weight: 800; letter-spacing: -0.5px; }
-    header .subtitle { font-size: 13px; opacity: 0.85; margin-top: 4px; font-weight: 400; }
+    header h1 { margin: 0; font-size: 1.5rem; font-weight: 800; }
 
     .card {
       background: var(--card); border: 1px solid var(--border); border-radius: 0 0 18px 18px;
-      padding: 28px 28px 32px; box-shadow: 0 6px 24px rgba(67,56,202,0.07);
+      padding: 25px; box-shadow: 0 10px 25px rgba(0,0,0,0.05);
     }
+
+    /* ESTILOS DE FORMULARIO */
     .section-intro {
-      background: linear-gradient(90deg, #eef2ff, #f5f3ff); border-left: 4px solid var(--primary2);
-      padding: 14px 18px; border-radius: 0 12px 12px 0; margin-bottom: 28px; font-size: 14.5px; color: #334155; line-height: 1.6;
+      background: #eef2ff; border-left: 4px solid var(--primary2);
+      padding: 15px; border-radius: 8px; margin-bottom: 25px; font-size: 14px;
     }
 
     details.step-card {
-      background: var(--card); border: 2px solid var(--border); border-radius: 16px; margin-bottom: 18px; overflow: hidden; transition: border-color 0.2s;
+      background: #fff; border: 2px solid var(--border); border-radius: 14px; margin-bottom: 15px;
     }
-    details.step-card[open] { border-color: var(--primary2); box-shadow: 0 4px 16px rgba(99,102,241,0.10); }
-    details.step-card.invalid { border-color: var(--danger); background: #fef2f2; }
-    details.step-card summary {
-      padding: 16px 22px; cursor: pointer; font-weight: 700; font-size: 16px; color: var(--primary); list-style: none;
-      display: flex; align-items: center; justify-content: space-between; user-select: none; gap: 10px;
-    }
-    details.step-card summary::after { content: "▼"; font-size: 12px; transition: transform 0.2s; opacity: 0.5; }
-    details.step-card[open] summary::after { transform: rotate(180deg); }
-    details.step-card .step-content { padding: 0 22px 22px; }
+    details.step-card[open] { border-color: var(--primary2); }
+    summary { padding: 15px; cursor: pointer; font-weight: 700; list-style: none; color: var(--primary); }
+    .step-content { padding: 0 15px 20px; }
 
-    label .lbl-main { display: block; font-size: 14.5px; font-weight: 600; margin: 18px 0 6px; color: #1e1b4b; }
-    label.required .lbl-main::after { content: " *"; color: var(--danger); font-weight: 700; }
-    .help { font-size: 13px; color: var(--muted); margin: 0 0 8px; line-height: 1.5; }
-    
+    label { display: block; font-weight: 600; margin: 15px 0 5px; font-size: 14px; }
     input, select, textarea {
-      width: 100%; padding: 12px 14px; border: 1.5px solid var(--border); border-radius: 10px;
-      font-size: 15px; font-family: inherit; background: #fafbff; color: #1e1b4b; appearance: none;
+      width: 100%; padding: 12px; border: 1.5px solid var(--border); border-radius: 10px;
+      font-size: 16px; background: #fafbff;
     }
-    select {
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%2364748b' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
-      background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px;
-    }
-    input:focus, textarea:focus, select:focus { outline: none; border-color: var(--primary2); background: #fff; box-shadow: 0 0 0 3px rgba(99,102,241,0.10); }
-    textarea { min-height: 110px; resize: vertical; line-height: 1.6; white-space: pre-wrap; }
+    textarea { min-height: 120px; resize: none; }
 
+    /* TABS DE EJEMPLOS */
+    .examples-box { margin-top: 15px; background: #f8fafc; padding: 15px; border-radius: 10px; border: 1px dashed #cbd5e1; }
+    .examples-tabs { display: flex; gap: 8px; margin-bottom: 10px; }
+    .example-tab { 
+        padding: 6px 12px; border-radius: 20px; border: 1px solid var(--border); 
+        background: #fff; font-size: 12px; cursor: pointer; 
+    }
+    .example-tab.active { background: var(--primary2); color: #white; border-color: var(--primary2); color: white; }
+    .example-content { display: none; font-size: 13px; font-style: italic; color: #475569; }
+    .example-content.active { display: block; }
+
+    /* BOTONES */
     .btn {
-      display: inline-flex; align-items: center; gap: 6px; padding: 10px 20px; border-radius: 40px; border: none; font-weight: 600;
-      cursor: pointer; font-size: 14px; transition: all 0.15s; background: #e9e9ef; color: #1f2937; margin-right: 8px; margin-bottom: 8px;
+      padding: 12px 20px; border-radius: 30px; border: none; font-weight: 700;
+      cursor: pointer; transition: 0.2s; font-size: 14px;
     }
     .btn-primary { background: var(--primary2); color: #fff; }
-    .btn-pdf { background: #b91c1c; color: #fff; font-size: 15px; padding: 12px 26px; }
+    .btn-pdf { 
+        background: #b91c1c; color: white; width: 100%; margin-top: 20px;
+        font-size: 16px; box-shadow: 0 4px 12px rgba(185, 28, 28, 0.3);
+    }
+    .btn-remove { background: #fee2e2; color: #dc2626; padding: 5px 10px; border-radius: 10px; margin-top: 5px; }
 
-    .word-counter { font-size: 13.5px; font-weight: 600; margin-top: 6px; }
-    .word-counter.valid { color: var(--ok); }
-    .word-counter.invalid { color: var(--danger); }
+    .word-counter { font-size: 12px; margin-top: 5px; font-weight: bold; }
+    .valid { color: var(--ok); }
+    .invalid { color: var(--danger); }
 
-    .skills-container { display: flex; flex-direction: column; gap: 10px; }
-    .skill-row { display: flex; gap: 10px; align-items: center; }
-    .skill-row input { flex: 1; }
-    .btn-remove { padding: 9px 15px; background: #fee2e2; color: var(--danger); border-radius: 30px; cursor: pointer; border: none; }
-
-    .week-cards { display: grid; gap: 22px; }
-    .week-card-item { background: #fafbff; border: 1.5px solid var(--border); border-radius: 16px; padding: 20px 22px; }
-
-    #toast { position: fixed; bottom: 24px; right: 24px; left: 24px; background: #1e1b4b; color: #fff; padding: 14px 24px; border-radius: 40px; display: none; z-index: 9999; text-align: center; }
-
-    /* ESTILO PARA EL PDF (Fuera de pantalla para que no parpadee) */
-    #pdf-template {
-        position: absolute;
-        left: -9999px;
-        top: 0;
-        width: 800px;
-        background: white;
+    /* ÁREA OCULTA PARA EL PDF (IMPORTANTE PARA IPAD) */
+    #pdf-render-area {
+        position: absolute; left: -9999px; top: 0; width: 800px;
+        background: white; padding: 40px; color: black;
+    }
+    
+    #toast {
+        position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+        background: #1e1b4b; color: white; padding: 12px 25px; border-radius: 50px;
+        display: none; z-index: 10000;
     }
   </style>
 </head>
 <body>
+
 <div class="container">
   <header>
-    <div>
-      <h1>📋 Planeación 3P · 3er trimestre</h1>
-      <div class="subtitle">Herramienta para alumnos</div>
-    </div>
+    <h1>📋 Planeación 3P · 3er Trimestre</h1>
   </header>
 
   <div class="card">
     <div class="section-intro">
-      ⭐ Completa el formulario y al final genera tu PDF.
+      Completa todos los pasos. Al terminar, descarga tu PDF para enviarlo por correo.
     </div>
 
-    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:15px; margin-bottom:20px;">
-      <label class="required"><span class="lbl-main">🏷️ Nombre del proyecto</span>
-        <input type="text" id="projectName">
-      </label>
-      <label class="required"><span class="lbl-main">🌱 Área</span>
-        <select id="projectDomain">
-          <option value="">-- Selecciona --</option>
-          <option>Ciencia o Tecnología</option>
-          <option>Arte y Cultura</option>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+      <div>
+        <label>Nombre del Proyecto</label>
+        <input type="text" id="projName" placeholder="Ej: Mi Huerto">
+      </div>
+      <div>
+        <label>Área</label>
+        <select id="projArea">
+          <option value="">Selecciona...</option>
+          <option>Ciencia / Tecnología</option>
+          <option>Arte / Cultura</option>
           <option>Impacto Social</option>
         </select>
-      </label>
+      </div>
     </div>
 
-    <details class="step-card" id="stepPurpose" open>
-      <summary>🎯 PASO 1 — Propósito</summary>
+    <details class="step-card" open>
+      <summary>🎯 PASO 1: Propósito</summary>
       <div class="step-content">
-        <textarea id="plan_purpose" placeholder="Mínimo 30 palabras..."></textarea>
-        <div class="word-counter" id="wordCounter">0 / 30 palabras</div>
+        <label>¿Qué quieres lograr? (Mínimo 30 palabras)</label>
+        <textarea id="plan_purpose" placeholder="Describe tu objetivo..."></textarea>
+        <div id="wordCount" class="word-counter invalid">0 / 30 palabras</div>
+
+        <div class="examples-box">
+          <div class="examples-tabs">
+            <div class="example-tab active" onclick="showEx(0)">Ejemplo 1</div>
+            <div class="example-tab" onclick="showEx(1)">Ejemplo 2</div>
+          </div>
+          <div class="example-content active">"Mi propósito es crear un sistema de reciclaje en el salón para reducir el desperdicio de papel y concienciar a mis compañeros sobre el medio ambiente..."</div>
+          <div class="example-content">"Quiero aprender a programar un juego básico en Python que enseñe matemáticas de forma divertida a niños de primaria..."</div>
+        </div>
       </div>
     </details>
 
-    <details class="step-card" id="stepSkills">
-      <summary>🛠️ PASO 2 — Habilidades (mínimo 3)</summary>
+    <details class="step-card">
+      <summary>🛠️ PASO 2: Habilidades</summary>
       <div class="step-content">
-        <div class="skills-container" id="skillsContainer"></div>
-        <button type="button" class="btn" id="btnAddSkill">➕ Agregar</button>
+        <div id="skillsList"></div>
+        <button class="btn btn-primary" onclick="addSkill()" style="margin-top:10px;">+ Habilidad</button>
       </div>
     </details>
 
-    <details class="step-card" id="stepWeeks">
-      <summary>📅 PASO 3 — Planeación Semanal</summary>
+    <details class="step-card">
+      <summary>📅 PASO 3: Semanas</summary>
       <div class="step-content">
-        <div class="week-cards" id="weekCardsContainer"></div>
-        <button type="button" class="btn btn-primary" id="btnAddWeek">➕ Agregar semana</button>
+        <div id="weeksList"></div>
+        <button class="btn btn-primary" onclick="addWeek()" style="margin-top:10px;">+ Semana</button>
       </div>
     </details>
 
-    <div style="margin-top:30px; text-align:center;">
-      <button type="button" class="btn btn-pdf" id="btnExportPDF">📄 GENERAR Y DESCARGAR PDF</button>
-    </div>
+    <button class="btn btn-pdf" id="btnDownload">📄 DESCARGAR PDF PARA ENTREGA</button>
   </div>
 </div>
 
-<div id="pdf-template"></div>
-
-<div id="toast"></div>
+<div id="pdf-render-area"></div>
+<div id="toast">Mensaje</div>
 
 <script>
-  (function(){
-    "use strict";
+  // --- LÓGICA DE LA PÁGINA ---
+  let skillCount = 0;
+  let weekCount = 0;
 
-    function toast(msg) {
-      const el = document.getElementById('toast');
-      el.textContent = msg; el.style.display = 'block';
-      setTimeout(() => el.style.display = 'none', 3000);
-    }
+  function addSkill(val = "") {
+    const div = document.createElement('div');
+    div.innerHTML = `<input type="text" class="skill-in" value="${val}" style="margin-top:5px;">`;
+    document.getElementById('skillsList').appendChild(div);
+  }
 
-    function countWords(text) { return text.trim().split(/\s+/).filter(w => w.length > 0).length; }
+  function addWeek(goal="", act="") {
+    weekCount++;
+    const div = document.createElement('div');
+    div.style = "border:1px solid #ddd; padding:10px; border-radius:10px; margin-top:10px;";
+    div.innerHTML = `<strong>Semana ${weekCount}</strong>
+      <input type="text" class="w-goal" placeholder="Meta" value="${goal}" style="margin-bottom:5px;">
+      <textarea class="w-act" placeholder="Actividades">${act}</textarea>`;
+    document.getElementById('weeksList').appendChild(div);
+  }
 
-    const skillsContainer = document.getElementById('skillsContainer');
-    const weeksContainer = document.getElementById('weekCardsContainer');
+  function showEx(idx) {
+    const tabs = document.querySelectorAll('.example-tab');
+    const conts = document.querySelectorAll('.example-content');
+    tabs.forEach(t => t.classList.remove('active'));
+    conts.forEach(c => c.classList.remove('active'));
+    tabs[idx].classList.add('active');
+    conts[idx].classList.add('active');
+  }
 
-    function addSkillRow(val='') {
-      const div = document.createElement('div'); div.className = 'skill-row';
-      div.innerHTML = `<input type="text" class="skill-input" value="${val}"><button type="button" class="btn-remove">✕</button>`;
-      div.querySelector('button').onclick = () => div.remove();
-      skillsContainer.appendChild(div);
-    }
+  // Contador de palabras
+  document.getElementById('plan_purpose').addEventListener('input', function() {
+    const count = this.value.trim().split(/\s+/).filter(w => w.length > 0).length;
+    const el = document.getElementById('wordCount');
+    el.innerText = `${count} / 30 palabras`;
+    el.className = count >= 30 ? "word-counter valid" : "word-counter invalid";
+  });
 
-    function addWeekCard(num, data={}) {
-      const div = document.createElement('div'); div.className = 'week-card-item';
-      div.innerHTML = `<h4>Semana ${num}</h4>
-        <input type="text" class="w-goal" placeholder="Meta" value="${data.g||''}">
-        <textarea class="w-act" placeholder="Actividad" style="margin-top:10px">${data.a||''}</textarea>`;
-      weeksContainer.appendChild(div);
-    }
+  // --- GENERACIÓN DE PDF (EL FIX PARA IPAD) ---
+  document.getElementById('btnDownload').onclick = function() {
+    const btn = this;
+    btn.innerText = "⏳ GENERANDO FOTO DE DOCUMENTO...";
+    btn.disabled = true;
 
-    function exportToPDF() {
-      const btn = document.getElementById('btnExportPDF');
-      const projectName = document.getElementById('projectName').value || "Mi Proyecto";
-      
-      btn.textContent = "⏳ PROCESANDO...";
-      btn.disabled = true;
+    // 1. Recolectar datos
+    const name = document.getElementById('projName').value || "Sin Nombre";
+    const area = document.getElementById('projArea').value;
+    const purpose = document.getElementById('plan_purpose').value;
+    
+    let skillsHtml = "";
+    document.querySelectorAll('.skill-in').forEach(s => { if(s.value) skillsHtml += `<li>${s.value}</li>`; });
 
-      // 1. Llenar el template del PDF
-      const template = document.getElementById('pdf-template');
-      const purpose = document.getElementById('plan_purpose').value;
-      const domain = document.getElementById('projectDomain').value;
-      
-      let skillsList = "";
-      document.querySelectorAll('.skill-input').forEach(i => { if(i.value) skillsList += `<li>${i.value}</li>`; });
+    let weeksHtml = "";
+    document.querySelectorAll('.w-goal').forEach((g, i) => {
+      const act = document.querySelectorAll('.w-act')[i].value;
+      weeksHtml += `<div style="margin-bottom:15px; border-bottom:1px solid #eee; padding-bottom:10px;">
+        <h4 style="margin:0; color:#3730a3;">Semana ${i+1}</h4>
+        <p><strong>Meta:</strong> ${g.value}</p>
+        <p style="font-size:12px;">${act}</p>
+      </div>`;
+    });
 
-      let weeksList = "";
-      document.querySelectorAll('.week-card-item').forEach((w, idx) => {
-        const goal = w.querySelector('.w-goal').value;
-        const act = w.querySelector('.w-act').value;
-        weeksList += `<div style="margin-bottom:15px; border:1px solid #ccc; padding:10px;">
-          <strong>Semana ${idx+1}:</strong> ${goal}<br>
-          <small>${act}</small>
-        </div>`;
-      });
-
-      template.innerHTML = `
-        <div style="padding:40px; font-family:sans-serif; background:white; color:black;">
-          <h1 style="color:#4338ca; border-bottom:3px solid #4338ca;">Planeación: ${projectName}</h1>
-          <p><strong>Área:</strong> ${domain}</p>
-          <h3>Propósito:</h3>
-          <p style="white-space:pre-wrap;">${purpose}</p>
-          <h3>Habilidades:</h3>
-          <ul>${skillsList}</ul>
-          <h3>Cronograma:</h3>
-          ${weeksList}
+    // 2. Construir el diseño del PDF en el área oculta
+    const renderArea = document.getElementById('pdf-render-area');
+    renderArea.innerHTML = `
+      <div style="font-family: Arial, sans-serif;">
+        <div style="background:#4338ca; color:white; padding:20px; border-radius:10px;">
+            <h1 style="margin:0;">Planeación 3P - 3er Trimestre</h1>
+            <p>Proyecto: ${name} | Área: ${area}</p>
         </div>
-      `;
+        <h3 style="color:#4338ca; border-bottom:2px solid #4338ca; margin-top:20px;">Propósito del Proyecto</h3>
+        <p style="white-space:pre-wrap; background:#f8fafc; padding:15px; border-radius:10px;">${purpose}</p>
+        <h3 style="color:#4338ca;">Habilidades a Desarrollar</h3>
+        <ul>${skillsHtml}</ul>
+        <h3 style="color:#4338ca;">Plan Semanal</h3>
+        ${weeksHtml}
+        <p style="text-align:center; font-size:10px; color:#94a3b8; margin-top:30px;">Generado desde la plataforma de Planeación Educativa</p>
+      </div>
+    `;
 
-      // 2. Opciones de PDF
-      const opt = {
-        margin: [0.5, 0.5],
-        filename: `Planeacion_${projectName}.pdf`,
-        image: { type: 'jpeg', quality: 0.98 },
-        html2canvas: { scale: 2, useCORS: true, letterRendering: true },
-        jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
-      };
+    // 3. Opciones de "screenshot" y conversión
+    const opt = {
+      margin: 0.5,
+      filename: `Planeacion_${name.replace(/\s+/g, '_')}.pdf`,
+      image: { type: 'jpeg', quality: 0.98 },
+      html2canvas: { 
+        scale: 2, 
+        useCORS: true, 
+        logging: false,
+        letterRendering: true // Mejora el renderizado de letras en iPad
+      },
+      jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+    };
 
-      // 3. Generar con un pequeño retraso para asegurar el renderizado en iPad
-      setTimeout(() => {
-        html2pdf().set(opt).from(template).save().then(() => {
-          btn.textContent = "📄 GENERAR Y DESCARGAR PDF";
-          btn.disabled = false;
-          toast("✅ PDF Descargado");
-        }).catch(err => {
-          console.error(err);
-          btn.disabled = false;
-          toast("❌ Error al crear PDF");
-        });
-      }, 700); // 700ms es el tiempo ideal para Safari
-    }
+    // ESPERA DE SEGURIDAD PARA IPAD (700ms)
+    // Esto asegura que la "foto" no salga en blanco
+    setTimeout(() => {
+      html2pdf().set(opt).from(renderArea).save().then(() => {
+        btn.innerText = "📄 DESCARGAR PDF PARA ENTREGA";
+        btn.disabled = false;
+        showToast("✅ ¡PDF Guardado con éxito!");
+      }).catch(err => {
+        showToast("❌ Error al generar");
+        btn.disabled = false;
+      });
+    }, 800);
+  };
 
-    function init() {
-      for(let i=0; i<3; i++) addSkillRow();
-      for(let i=1; i<=4; i++) addWeekCard(i);
-      
-      document.getElementById('btnAddSkill').onclick = () => addSkillRow();
-      document.getElementById('btnAddWeek').onclick = () => addWeekCard(weeksContainer.children.length+1);
-      document.getElementById('btnExportPDF').onclick = exportToPDF;
-      document.getElementById('plan_purpose').oninput = function() {
-        document.getElementById('wordCounter').textContent = countWords(this.value) + " / 30 palabras";
-      };
-    }
+  function showToast(m) {
+    const t = document.getElementById('toast');
+    t.innerText = m; t.style.display = "block";
+    setTimeout(() => t.style.display="none", 3000);
+  }
 
-    init();
-  })();
+  // Inicializar con campos vacíos
+  window.onload = () => {
+    for(let i=0; i<3; i++) addSkill();
+    for(let i=0; i<4; i++) addWeek();
+  };
 </script>
+
 </body>
 </html>
